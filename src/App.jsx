@@ -3,12 +3,12 @@ import SingleCard from "./components/SingleCard"
 import Confetti from 'react-confetti'
 
 const cardImages = [
-  { "src": "/assets/cheeseburger.png", matched: false },
-  { "src": "/assets/fries.png", matched: false },
-  { "src": "/assets/hotdog.png", matched: false },
-  { "src": "/assets/ice-cream.png", matched: false },
-  { "src": "/assets/milkshake.png", matched: false },
-  { "src": "/assets/pizza.png", matched: false },
+  { "src": "./assets/cheeseburger.png", matched: false },
+  { "src": "./assets/fries.png", matched: false },
+  { "src": "./assets/hotdog.png", matched: false },
+  { "src": "./assets/ice-cream.png", matched: false },
+  { "src": "./assets/milkshake.png", matched: false },
+  { "src": "./assets/pizza.png", matched: false },
 ]
 
 function App() {

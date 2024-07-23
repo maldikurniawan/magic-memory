@@ -1,5 +1,4 @@
 import React from 'react'
-import "./SingleCard.css"
 
 export default function SingleCard({ card, handleChoice, flipped, disabled }) {
     const handleClick = () => {
@@ -8,9 +7,9 @@ export default function SingleCard({ card, handleChoice, flipped, disabled }) {
         }
     }
     return (
-        <div className='card'>
+        <div className='card mx-2 my-2 flex justify-center'>
             <div className={flipped ? "flipped" : ""}>
-                <img className='front' src={card.src} alt="card front" />
+                <img className='front w-full' src={card.src} alt="card front" />
                 <img
                     className='back'
                     src="/assets/brick.png"

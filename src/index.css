@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800&display=swap');
 
 /* base styles */
 body {
@@ -12,4 +13,37 @@ body {
   text-align: center;
   background: #1b1523;
   color: #fff;
+}
+
+.card {
+  position: relative;
+}
+
+.card img {
+  display: block;
+  border: 2px solid #fff;
+  border-radius: 6px;
+}
+
+/* card front */
+.card .front {
+  transform: rotateY(90deg);
+  transition: all ease-in 0.2s;
+  position: absolute;
+}
+
+.flipped .front {
+  transform: rotateY(0deg);
+  transition-delay: 0.2s;
+}
+
+/* card back */
+.card .back {
+  transition: all ease-in 0.2s;
+  transition-delay: 0.2s;
+}
+
+.flipped .back {
+  transform: rotateY(90deg);
+  transition-delay: 0s;
 }

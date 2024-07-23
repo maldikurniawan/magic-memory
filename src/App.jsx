@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import SingleCard from "./components/SingleCard"
+import Confetti from 'react-confetti'
 
 const cardImages = [
   { "src": "/assets/cheeseburger.png", matched: false },
@@ -16,16 +17,18 @@ function App() {
   const [choiceOne, setChoiceOne] = useState(null)
   const [choiceTwo, setChoiceTwo] = useState(null)
   const [disabled, setDisabled] = useState(false)
+  const [allMatched, setAllMatched] = useState(false)
 
   // shuffle cards
   const shuffleCards = () => {
-    const shuffleCards = [...cardImages, ...cardImages]
+    const shuffledCards = [...cardImages, ...cardImages]
       .sort(() => Math.random() - 0.5)
-      .map((cards) => ({ ...cards, id: Math.random() }))
+      .map((card) => ({ ...card, id: Math.random() }))
     setChoiceOne(null)
     setChoiceTwo(null)
-    setCards(shuffleCards)
+    setCards(shuffledCards)
     setTurns(0)
+    setAllMatched(false)
   }
 
   // handle a choice
@@ -53,7 +56,13 @@ function App() {
       }
     }
   }, [choiceOne, choiceTwo])
-  console.log(cards)
+
+  // check if all cards are matched
+  useEffect(() => {
+    if (cards.length && cards.every(card => card.matched)) {
+      setAllMatched(true)
+    }
+  }, [cards])
 
   //reset choices & increase turn
   const resetTurn = () => {
@@ -69,10 +78,10 @@ function App() {
   }, [])
 
   return (
-    <div className="App">
-      <h1>Magic Match</h1>
-      <button onClick={shuffleCards}>New Game</button>
-      <div className='card-grid'>
+    <div className="max-w-[500px] mx-auto my-10 overflow-hidden">
+      <h1 className='text-center text-4xl mb-6 font-bold'>Magic Match</h1>
+      <button className='bg-transparent border-2 border-white px-3 py-2 rounded text-white font-bold cursor-pointer text-base hover:bg-[#c23866]' onClick={shuffleCards}>New Game</button>
+      <div className='card-grid mt-6 grid min-[500px]:grid-cols-4 grid-cols-3 mb-2'>
         {cards.map(card => (
           <SingleCard
             key={card.id}
@@ -84,6 +93,8 @@ function App() {
         ))}
       </div>
       <p>Turns: {turns}</p>
+      <a href="https://maldikurniawan.github.io/random_app/" className='hover:text-[#c23866]' target='_blank'>Follow me here!</a>
+      {allMatched && <Confetti />}
     </div>
   );
 }

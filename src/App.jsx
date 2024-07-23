@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import SingleCard from "./components/SingleCard"
 import Confetti from 'react-confetti'
+import { useWindowSize } from 'react-use'
 
 const cardImages = [
   { "src": "./assets/cheeseburger.png", matched: false },
@@ -18,6 +19,7 @@ function App() {
   const [choiceTwo, setChoiceTwo] = useState(null)
   const [disabled, setDisabled] = useState(false)
   const [allMatched, setAllMatched] = useState(false)
+  const { width, height } = useWindowSize()
 
   // shuffle cards
   const shuffleCards = () => {
@@ -94,7 +96,7 @@ function App() {
       </div>
       <p>Turns: {turns}</p>
       <a href="https://maldikurniawan.github.io/random_app/" className='hover:text-[#c23866]' target='_blank'>Follow me here!</a>
-      {allMatched && <Confetti />}
+      {allMatched && <Confetti width={width} height={height} />}
     </div>
   );
 }

@@ -1,7 +1,9 @@
-import { useEffect, useState } from 'react'
-import SingleCard from "./components/SingleCard"
-import Confetti from 'react-confetti'
-import { useWindowSize } from 'react-use'
+import { useEffect, useRef, useState } from 'react';
+import SingleCard from "./components/SingleCard";
+import Confetti from 'react-confetti';
+import { useWindowSize } from 'react-use';
+import deathbyglamour from "./assets/deathbyglamour.mp3";
+import { soundoff, soundon } from "./assets/icons";
 
 const cardImages = [
   { "src": "./assets/cheeseburger.png", matched: false },
@@ -79,6 +81,23 @@ function App() {
     shuffleCards()
   }, [])
 
+  // Music
+  const audioRef = useRef(new Audio(deathbyglamour));
+  audioRef.current.volume = 0.4;
+  audioRef.current.loop = true;
+
+  const [isPlayingMusic, setIsPlayingMusic] = useState(true);
+
+  useEffect(() => {
+    if (isPlayingMusic) {
+      audioRef.current.play();
+    }
+
+    return () => {
+      audioRef.current.pause();
+    };
+  }, [isPlayingMusic]);
+
   return (
     <div className="max-w-[500px] mx-auto my-10 overflow-hidden">
       <h1 className='text-center text-4xl mb-6 font-bold'>Magic Match</h1>
@@ -97,6 +116,14 @@ function App() {
       <p>Turns: {turns}</p>
       <a href="https://maldikurniawan.github.io/random_app/" className='hover:text-[#c23866]' target='_blank'>Follow me here!</a>
       {allMatched && <Confetti width={width} height={height} />}
+      <div className='absolute bottom-4 left-2'>
+        <img
+          src={!isPlayingMusic ? soundoff : soundon}
+          alt='jukebox'
+          onClick={() => setIsPlayingMusic(!isPlayingMusic)}
+          className='w-10 h-10 cursor-pointer object-contain'
+        />
+      </div>
     </div>
   );
 }

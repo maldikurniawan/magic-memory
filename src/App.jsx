@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import SingleCard from "./components/SingleCard";
 import Confetti from 'react-confetti';
 import { useWindowSize } from 'react-use';
-import deathbyglamour from "./assets/deathbyglamour.mp3";
+import spiderdance from "./assets/spiderdance.mp3";
 import { soundoff, soundon } from "./assets/icons";
 
 const cardImages = [
@@ -82,7 +82,7 @@ function App() {
   }, [])
 
   // Music
-  const audioRef = useRef(new Audio(deathbyglamour));
+  const audioRef = useRef(new Audio(spiderdance));
   audioRef.current.volume = 0.4;
   audioRef.current.loop = true;
 

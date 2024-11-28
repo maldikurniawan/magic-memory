@@ -116,14 +116,20 @@ function App() {
       <p>Turns: {turns}</p>
       <a href="https://maldikurniawan.github.io/random_app/" className='hover:text-[#c23866]' target='_blank'>Follow me here!</a>
       {allMatched && <Confetti width={width} height={height} />}
-      <div className='absolute bottom-4 left-2'>
-        <img
-          src={!isPlayingMusic ? soundoff : soundon}
-          alt='jukebox'
-          onClick={() => setIsPlayingMusic(!isPlayingMusic)}
-          className='w-10 h-10 cursor-pointer object-contain'
-        />
-      </div>
+      <img
+        src={!isPlayingMusic ? soundoff : soundon}
+        onClick={() => setIsPlayingMusic(!isPlayingMusic)}
+        className='opacity-100 z-40 w-14 h-14 p-2'
+        style={{
+          position: 'fixed',
+          bottom: '20px',
+          right: '20px',
+          color: '#FFF',
+          border: 'none',
+          borderRadius: '5px',
+          cursor: 'pointer'
+        }}
+      />
     </div>
   );
 }

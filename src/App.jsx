@@ -114,7 +114,7 @@ function App() {
         ))}
       </div>
       <p>Turns: {turns}</p>
-      <a href="https://maldikurniawan.github.io/random_app/" className='hover:text-[#c23866]' target='_blank'>Follow me here!</a>
+      <a href="https://maldikurniawan.netlify.app/" className='hover:text-[#c23866]' target='_blank'>Follow me here!</a>
       {allMatched && <Confetti width={width} height={height} />}
       <img
         src={!isPlayingMusic ? soundoff : soundon}
